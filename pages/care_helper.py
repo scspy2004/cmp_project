@@ -5,6 +5,17 @@ import plotly.express as px
 import os
 
 
+eqp_options = ["C001", "C002", "C003"]
+lot_options = ["AAA001.1", "AAA002.1", "AAA003.1"]
+
+cols = st.columns(2)
+with cols[0]:
+    eqp_id = st.selectbox("EQP ID: ", eqp_options)
+with cols[1]:
+    lot_id = st.selectbox("Lot ID: ", lot_options)
+
+st.markdown("---")
+
 print(os.listdir('data'))
 df = pd.read_csv('data/result.csv')
 
