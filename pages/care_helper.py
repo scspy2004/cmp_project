@@ -13,7 +13,7 @@ with cols[0]:
     eqp_id = st.selectbox("EQP ID: ", eqp_options)
 with cols[1]:
     lot_id = st.selectbox("Lot ID: ", lot_options)
-
+ 
 st.markdown("---")
 
 print(os.listdir('data'))
@@ -26,17 +26,11 @@ for i in range(max_count):
 
 style_css = """
 <style>
-table {
-  border-collapse: collapse;
-}
+table { border-collapse: collapse; }
 th:nth-child(1), td:nth-child(1) { width: 25px; }
 th:nth-child(2), td:nth-child(2) { width: 100px; }
 th:nth-child(3), td:nth-child(3) { width: 50px; }
-th, td {
-  border: 1px solid #ddd;
-  padding: 4px;
-  text-align: center;
-}
+th, td { border: 1px solid #ddd; padding: 4px; text-align: center; }
 </style>
 """
 
@@ -44,9 +38,36 @@ exclude_columns = ['date']
 
 cols = st.columns(max_count)
 for i in range(max_count):
-    html_table = result_dfs[i].drop(columns=exclude_columns).to_html(index=False)
+    filtered_df = result_dfs[i].drop(columns=exclude_columns)
+    
+    html_string = '<table border="1" class="dataframe">\n'
+    html_string += '  <thead>\n'
+    html_string += '    <tr>\n'
+
+    for col in filtered_df.columns:
+        html_string += f"      <th>{col}</th>\n"
+    
+    html_string += "    </tr>\n"
+    html_string += "  </thead>\n  <tbody>"
+    html_string += "  <tbody>\n"
+
+    for _, row in filtered_df.iterrows():
+        if row["result"] in "fail":
+            background_color = "#ffcccc"
+        else:
+            background_color = "#ffffff"
+        html_string += f'    <tr style="background-color: {background_color};">\n'
+        for col in filtered_df.columns:
+            html_string += f"      <td>{row[col]}</td>\n"
+        html_string += "    </tr>\n"
+
+    html_string += "  </tbody>\n"
+    html_string += "</table>"
+
     with cols[i]:
-        st.markdown(style_css + html_table, unsafe_allow_html=True)
+        st.markdown(style_css + html_string.strip(), unsafe_allow_html=True)
+        
+
 
 
 
