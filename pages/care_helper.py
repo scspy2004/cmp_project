@@ -40,9 +40,9 @@ cols = st.columns(max_count)
 for i in range(max_count):
     filtered_df = result_dfs[i].drop(columns=exclude_columns)
     
-    html_string = '<table border="1" class="dataframe">\n'
-    html_string += '  <thead>\n'
-    html_string += '    <tr>\n'
+    html_string = "<table>\n"
+    html_string += "  <thead>\n"
+    html_string += "    <tr>\n"
 
     for col in filtered_df.columns:
         html_string += f"      <th>{col}</th>\n"
