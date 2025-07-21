@@ -1,0 +1,30 @@
+<Measurements>
+    <Measurement>
+        <ID>001</ID>
+        <Date>2025-07-20</Date>
+        <Value1>12.5</Value1>
+        <Value2>23.1</Value2>
+        <Status>PASS</Status>
+    </Measurement>
+    <Measurement>
+        <ID>002</ID>
+        <Date>2025-07-20</Date>
+        <Value1>11.8</Value1>
+        <Value2>24</Value2>
+        <Status>FAIL</Status>
+    </Measurement>
+    <Measurement>
+        <ID>003</ID>
+        <Date>2025-07-20</Date>
+        <Value1>12.0</Value1>
+        <Value2>23.0</Value2>
+        <Status>PASS</Status>
+    </Measurement>
+    <Measurement>
+        <ID>040</ID>
+        <Date>2025-07-20</Date>
+        <Value1>11.8</Value1>
+        <Value2>24</Value2>
+        <Status>FAIL</Status>
+    </Measurement>
+</Measurements>
