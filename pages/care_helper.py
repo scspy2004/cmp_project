@@ -65,7 +65,7 @@ for i in range(max_count):
     html_string += "</table>"
 
     with cols[i]:
-        st.markdown(style_css + html_string.strip(), unsafe_allow_html=True)
+        st.markdown(style_css + html_string, unsafe_allow_html=True)
         
 
 
