@@ -24,12 +24,6 @@ for i in range(max_count):
     result_dfs.append(df.groupby("slot").nth(i).reset_index())
 
 
-# def highlight_fail(cell):
-#     if isinstance(cell, str) and "fail" in cell.lower():
-#         return "background-color: rgb(255, 191, 191)"
-#     return ""
-
-
 def style_cell(cell):
     if isinstance(cell, str) and "fail" in cell.lower():
         return "background-color: rgb(255, 191, 191); font-weight: bold"
@@ -46,20 +40,6 @@ def highlight_fail(cell):
     return ""
 
 
-# styled_df = result_dfs[0].style.applymap(highlight_fail)
-
-# st.dataframe(styled_df, height=1000)
-
-# style_css = """
-# <style>
-# table { border-collapse: collapse; }
-# th:nth-child(1), td:nth-child(1) { width: 25px; }
-# th:nth-child(2), td:nth-child(2) { width: 100px; }
-# th:nth-child(3), td:nth-child(3) { width: 50px; }
-# th, td { border: 1px solid #ddd; padding: 4px; text-align: center; }
-# </style>
-# """
-
 exclude_columns = ['date']
 
 cols = st.columns(max_count)
@@ -72,7 +52,6 @@ for i in range(max_count):
     with cols[i]:
         st.dataframe(styled_df, use_container_width=True, height=800)
         print(styled_df)
-        # styled_df['result'] = styled_df['result'].str.replace('pass', 'pass<br>pass')
         styled_df_html = styled_df.to_html(escape=False)
 
         st.markdown(styled_df_html, unsafe_allow_html=True)
